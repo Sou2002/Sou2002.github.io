@@ -22,11 +22,18 @@
 <body>
     <header>
         <nav>
-            <a href="index.html">Sourav Banerjee</a>
-            <a href="pages/about.html">About Me</a>
-            <a href="pages/blogs.html">Blogs</a>
-            <a href="pages/projects.html">Projects</a>
-            <a href="pages/socials.html">Socials</a>
+            <a href="index.html" class="logo">Sourav Banerjee</a>
+            
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="pages/about.html">About Me</a>
+                <a href="pages/blogs.html">Blogs</a>
+                <a href="pages/projects.html">Projects</a>
+                <a href="pages/socials.html">Socials</a>
+            </div>
         </nav>
     </header>
 
@@ -49,5 +56,23 @@
     <footer>
         <p>&copy; 2026 Sourav Banerjee. All rights reserved.</p>
     </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>

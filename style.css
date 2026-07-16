@@ -65,12 +65,32 @@ nav a:hover {
     color: var(--primary);
 }
 
-nav a:first-child {
+nav a.logo {
     font-family: var(--font-display);
     font-weight: 700;
     color: var(--ink);
     font-size: 1.1rem;
     margin-right: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--ink);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--primary);
 }
 
 main {
@@ -91,6 +111,7 @@ main {
 }
 
 h1 {
+    grid-area: heading;
     font-family: var(--font-display);
     color: var(--ink);
     
@@ -103,6 +124,7 @@ h1 {
 }
 
 main img {
+    grid-area: photo;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 30px;
@@ -128,6 +150,17 @@ main a {
 
 main a:hover {
     border-bottom: 2px solid var(--primary);
+}
+
+.intro {
+    grid-area: intro;
+}
+
+.currently {
+    grid-area: currently;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    margin-top: 20px;
 }
 
 em {
@@ -165,25 +198,17 @@ footer {
     }
 
     h1 { 
-        grid-area: heading; 
         margin-top: 0; 
     }
     
     main img { 
-        grid-area: photo; 
         margin-bottom: 0;
         width: 100%; 
         height: auto;
     }
     
-    .intro { 
-        grid-area: intro; 
-    }
-    
     .currently { 
-        grid-area: currently; 
         margin-top: 10px; 
-        border-top: 1px solid var(--line);
         padding-top: 30px;
     }
 }
@@ -193,17 +218,58 @@ footer {
         padding-left: 16px;
         padding-right: 16px;
     }
-    
+
     nav {
         justify-content: center; 
         gap: 15px;
+        flex-wrap: wrap;
     }
 
-    nav a:first-child {
-        margin-right: 0;
+    nav a.logo {
+        margin-right: auto;
+        margin-bottom: 0;
+        width: auto;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
         width: 100%;
+        padding-top: 20px;
+        gap: 16px;
         text-align: center;
-        margin-bottom: 8px;
-        font-size: 1.2rem;
+        border-top: 1px solid var(--line);
+        margin-top: 16px;
+    }
+
+    .nav-links.active {
+        display: flex; 
+    }
+
+    main {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "photo"
+            "heading"
+            "intro"
+            "currently";
+        text-align: center;
+    }
+
+    main img {
+        margin: 0 auto;
+        width: 140px;
+    }
+
+    .currently p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
     }
 }
