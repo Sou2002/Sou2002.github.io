@@ -80,7 +80,7 @@ nav a.logo {
 }
 
 .menu-toggle {
-    display: none; /* Hidden by default on desktop */
+    display: none;
     background: transparent;
     border: none;
     font-size: 1.5rem;
@@ -94,32 +94,27 @@ nav a.logo {
 }
 
 main {
-    flex: 1;
-    width: 100%;
-}
-
-main {
     display: grid;
     grid-template-columns: 1fr 150px;
     grid-template-areas: 
         "heading photo"
-        "intro photo"
+        "intro intro" /* Changed from "intro photo" so it spans full width */
         "currently currently";
     column-gap: 40px; 
-    align-items: start;
+    row-gap: 30px; /* Adds space between the top row and the intro section */
+    align-items: center; /* Aligns the heading vertically with the center of the photo */
     margin-top: 40px;
+    flex: 1;
+    width: 100%;
 }
 
 h1 {
     grid-area: heading;
     font-family: var(--font-display);
     color: var(--ink);
-    
     font-size: clamp(2rem, 6vw, 2.5rem); 
-    
     font-weight: 700;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin: 0;
     line-height: 1.2;
 }
 
@@ -180,7 +175,7 @@ footer {
     text-align: center;
     color: var(--muted);
     font-size: 0.9rem;
-    border-top: 1px solid var(--line); /* Adds a subtle dividing line */
+    border-top: 1px solid var(--line);
 }
 
 
@@ -190,11 +185,11 @@ footer {
         grid-template-columns: 1fr 220px; 
         grid-template-areas: 
             "heading photo"
-            "intro photo"
+            "intro intro"
             "currently currently";
-        column-gap: 50px; 
-        align-items: start;
-        margin-top: 40px;
+        column-gap: 50px;
+        row-gap: 40px;
+        align-items: center;
     }
 
     h1 { 
