@@ -3,21 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Sourav Banerjee. Explore my projects, blogs, and journey in AI.">
+    <meta property="og:title" content="Sourav Banerjee">
+    <meta property="og:description" content="Explore my projects, blogs, and AI journey.">
+    <meta property="og:image" content="assets/sourav-banerjee.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://sou2002.github.io/">
+    <meta property="og:type" content="website">
+
     <title>Socials | Sourav Banerjee</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
     <link rel="stylesheet" href="../style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href="../index.html">Sourav Banerjee</a>
-            <a href="about.html">About Me</a>
-            <a href="blogs.html">Blogs</a>
-            <a href="projects.html">Projects</a>
-            <a href="socials.html">Socials</a>
+            <a href="../index.html" class="logo">Sourav Banerjee</a>
+            
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="about.html">About Me</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="projects.html">Projects</a>
+                <a href="socials.html">Socials</a>
+            </div>
         </nav>
     </header>
-    <main>
+
+    <main class="page-content">
+        <div class="page-header">
+            <h1>Let's Connect</h1>
+            <p class="page-intro">I'm always open to discussing machine learning, tech collaborations, or just chatting about new ideas. Find me across the web below.</p>
+        </div>
         
+        <div class="link-group">
+            <h2 class="group-title">Connect with me</h2>
+            <div class="links-grid">
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="social-card">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://twitter.com/your-username" target="_blank" class="social-card">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <span>X (Twitter)</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="link-group">
+            <h2 class="group-title">Follow my work</h2>
+            <div class="links-grid">
+                <a href="https://github.com/your-username" target="_blank" class="social-card">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://huggingface.co/your-username" target="_blank" class="social-card">
+                    <span class="emoji-icon">🤗</span>
+                    <span>Hugging Face</span>
+                </a>
+                <a href="https://kaggle.com/your-username" target="_blank" class="social-card">
+                    <i class="fa-brands fa-kaggle"></i>
+                    <span>Kaggle</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="link-group">
+            <h2 class="group-title">Wanna read the blogs?</h2>
+            <div class="links-grid">
+                <a href="https://medium.com/@your-username" target="_blank" class="social-card">
+                    <i class="fa-brands fa-medium"></i>
+                    <span>Medium</span>
+                </a>
+                <a href="https://your-username.substack.com" target="_blank" class="social-card">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>Substack</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="link-group">
+            <h2 class="group-title">Friend?</h2>
+            <div class="links-grid">
+                <a href="https://facebook.com/your-username" target="_blank" class="social-card">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://instagram.com/your-username" target="_blank" class="social-card">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+            </div>
+        </div>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Sourav Banerjee. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>
