@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Sourav Banerjee</title>
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Sourav Banerjee</a>
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="about.html">About Me</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="projects.html" style="color: var(--primary);">Projects</a>
+                <a href="socials.html">Socials</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+        
+        <div id="project-meta-header" class="project-meta-header">
+            <h1 id="detail-title">Loading...</h1>
+            <div id="detail-stats" class="detail-stats"></div>
+            <div id="detail-tags" class="project-tags" style="margin-top: 16px;"></div>
+        </div>
+
+        <div id="readme-container" class="readme-content">
+            <p style="color: var(--muted);"><i class="fa-solid fa-spinner fa-spin"></i> Fetching Details...</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sourav Banerjee. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const githubUsername = 'Sou2002';
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const repoName = urlParams.get('repo');
+        const customTitle = urlParams.get('title');
+
+        if (!repoName) {
+            document.getElementById('readme-container').innerHTML = "<p>Error: No project specified.</p>";
+        } else {
+            document.getElementById('detail-title').innerText = customTitle || repoName;
+
+            fetch(`https://api.github.com/repos/${githubUsername}/${repoName}`)
+                .then(res => res.json())
+                .then(repo => {
+                    const statsDiv = document.getElementById('detail-stats');
+                    statsDiv.innerHTML = `
+                        <span><i class="fa-solid fa-star" style="color: var(--gold);"></i> ${repo.stargazers_count} Stars</span>
+                        <span><i class="fa-solid fa-code-fork"></i> ${repo.forks_count} Forks</span>
+                        <a href="${repo.html_url}" target="_blank" class="github-out-link">View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    `;
+
+                    const tagsDiv = document.getElementById('detail-tags');
+                    if (repo.language) tagsDiv.innerHTML += `<em>${repo.language}</em>`;
+                    if (repo.topics) repo.topics.forEach(topic => tagsDiv.innerHTML += `<em>${topic}</em>`);
+                });
+
+            fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/readme`, {
+                headers: { 'Accept': 'application/vnd.github.html' } 
+            })
+            .then(response => {
+                if (!response.ok) throw new Error("README not found");
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById('readme-container').innerHTML = html;
+            })
+            .catch(error => {
+                document.getElementById('readme-container').innerHTML = `
+                    <p style="color: var(--muted);">No README.md file was found for this repository on GitHub, or it is currently unavailable.</p>
+                `;
+            });
+        }
+        
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
