@@ -9,15 +9,131 @@
 <body>
     <header>
         <nav>
-            <a href="../index.html">Sourav Banerjee</a>
-            <a href="about.html">About Me</a>
-            <a href="blogs.html">Blogs</a>
-            <a href="projects.html">Projects</a>
-            <a href="socials.html">Socials</a>
+            <a href="../index.html" class="logo">Sourav Banerjee</a>
+            
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links">
+                <a href="about.html">About Me</a>
+                <a href="blogs.html">Blogs</a>
+                <a href="projects.html">Projects</a>
+                <a href="socials.html">Socials</a>
+            </div>
         </nav>
     </header>
-    <main>
-        
+
+    <main class="page-content">
+        <div class="page-header">
+            <h1>About Me</h1>
+            <p class="page-intro">Founding my way into the unknown field of AI.</p>
+        </div>
+
+        <section class="about-section">
+            <h2 class="section-title">My Journey</h2>
+            <div class="about-text">
+                <p>Coming Soon...</p>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                <div class="timeline-date">Apr 2025 &mdash; Present</div>
+                    <div class="timeline-content">
+                        <h3>Junior Machine Learning Engineer</h3>
+                        <h4>EEGRAB • Kolkata, West Bengal, India</h4>
+                        <ul>
+                            <li>Architected the complete AI subsystem for a fully offline educational robot (CBSE Class 1-8), leading the technical design, tech stack selection, and backend implementation logic.</li>
+                            <li>Deployed on-premises Large Language Models using vLLM and Ollama to enable 100% offline capability, ensuring low-latency interactions via custom-hosted STT and TTS pipelines integrated with Android endpoints.</li>
+                            <li>Engineered a Hybrid RAG system for the Teaching Mode that retrieves curriculum content from NCERT textbooks, utilizing VectorDB for semantic search and MongoDB for structural data querying.</li>
+                            <li>Designed the Auto-Teach interactive workflow and the automated assessment module, enabling the robot to autonomously conduct scheduled lessons and generate dynamic quizzes.</li>
+                            <li>Fine-tuned an STT model for the Bengali language, which can run on edge devices.</li>
+                            <li>Trained and improved the accuracy of several YOLO models for factory CCTV cameras detecting PPE and further deployed them to the real-time inferencing pipeline.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Oct 2024 &mdash; Feb 2025</div>
+                    <div class="timeline-content">
+                        <h3>Data Science Intern</h3>
+                        <h4>DaSatya</h4>
+                        <ul>
+                            <li>Designed and implemented a scalable microservices architecture using Docker and AWS EKS, developed APIs for elastic content search (S3/Local) and advanced PDF manipulation.</li>
+                            <li>Researched and developed autonomous AI Agents using Phidata and Groq to automate Jira project management and deliver personalized news digests.</li>
+                            <li>Optimized retrieval accuracy by experimenting with RAG Fusion and Knowledge Graphs, moving beyond basic vector search to handle complex unstructured queries.</li>
+                            <li>Integrated MLflow for model tracking and managed the end-to-end deployment of backend services on AWS EC2.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Aug 2023 &mdash; Aug 2024</div>
+                    <div class="timeline-content">
+                        <h3>Data Science Intern</h3>
+                        <h4>MUST Research Labs • Remote</h4>
+                        <ul>
+                            <li>Implemented a high-accuracy real-time Face Recognition system for live webcam feeds using Python and dlib.</li>
+                            <li>Developed a RAG-based QA bot utilizing Llama-2 and LangChain, and a transactional BFSI chatbot using the Rasa framework with a FastAPI backend.</li>
+                            <li>Fine-tuned GPT-2 models on custom datasets to automate problem-type classification and text generation for educational content.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Nov 2022 &mdash; Jun 2024</div>
+                    <div class="timeline-content">
+                        <h3>M.Sc in Computer Science</h3>
+                        <h4>University of Kalyani</h4>
+                        <p>Grade: 9.16</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Jun 2019 &mdash; Jun 2022</div>
+                    <div class="timeline-content">
+                        <h3>B.Sc in Computer Science</h3>
+                        <h4>Kalyani Mahavidyalaya</h4>
+                        <p>Grade: 8.74</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Sourav Banerjee. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>
